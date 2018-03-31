@@ -87,7 +87,7 @@ d1 <- data.frame(word = names(v1), freq = v1)
 
 TDM_tfidf <-tm::TermDocumentMatrix(corpus, control = list(weighting = function(x) weightTfIdf(x, normalize = FALSE)))
 
-#rank terms by average tfidf weighting
+# rank terms by average tfidf weighting
 
 m2 <- as.matrix(TDM_tfidf)
 v2 <- sort(rowMeans(m2), decreasing=TRUE)
@@ -150,7 +150,7 @@ corpus <- corpus[-as.numeric(empty.rows)]
 DTM <- tm::DocumentTermMatrix(corpus)
 
 
-# tun LDA process, setting a seed so that the output of the model is predictable
+# tune LDA process and generate topic terms, setting a seed so that the output of the model is predictable
 corpus_lda <- LDA(DTM, k = ntop, control = list(seed = 1234))
 
 # tidy words in topics
@@ -193,7 +193,8 @@ prop_topics %>%
   barplot(xlab = "topic ID", ylab = "Proportion of comments")
 dev.off()
 
-# write results to excel 
+# write results to excel for those poor people who don't know any better
+                                                          
 
 l <- list("Wordcounts" = d1, "TF-IDF Results" = d2, "topic top terms" = topic_top_terms, "prop_topics" = prop_topics)
 write.xlsx(l, "facebook_text_analytics_results.xlsx")
