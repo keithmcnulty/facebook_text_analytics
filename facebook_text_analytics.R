@@ -21,7 +21,7 @@ library(openxlsx)
 # set directories
 
 homedir <- getwd()
-setwd("C:/R/facebook_analytics") # <----- change to directory where facenook data file was unzipped
+setwd("C:/R/facebook_analytics") # <----- change to directory where facebook data file was unzipped
 
 # read in HTML code
 
@@ -188,7 +188,7 @@ dev.off()
 
 
 
-jpeg("prop_comments.jpg")
+jpeg("prop_topics.jpg")
 prop_topics %>% 
   barplot(xlab = "topic ID", ylab = "Proportion of comments")
 dev.off()
