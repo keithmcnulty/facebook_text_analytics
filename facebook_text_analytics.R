@@ -52,12 +52,6 @@ datetime_vec <- unlist(datetime_list[[1]][,2])
 
 date_vec <- as.POSIXct(datetime_vec, format = "%A, %d %B %Y", tz="GMT")
 
-day_vec <- format(date_vec, "%A") %>% as.factor()
-
-dom_vec <- format(date_vec, "%d") %>% as.factor()
-
-mon_vec <- format(date_vec, "%B") %>% as.factor() %>% factor(levels = month.name) 
-
 year_vec <- dom_vec <- format(date_vec, "%Y") %>% as.factor()
 
 time_vec <- sub('.*at ', '', datetime_vec)
