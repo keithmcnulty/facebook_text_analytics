@@ -272,7 +272,7 @@ p6 <- plotly::plot_ly(as.data.frame(prop_topics), x = ~prop, y = ~Freq, type = '
   plotly::layout(xaxis = list(title = "Topic ID"), yaxis = list(title = "Proportion of posts"))
 export(p6, "proportion_posts_by_topic.jpeg")
 
-# write results to excel 
+# write results to excel for those poor folks who don't know any better
 
 l <- list("Wordcounts" = d1, "TF-IDF Results" = d2, "topic top terms" = topic_top_terms, "prop_topics" = prop_topics)
 openxlsx::write.xlsx(l, "facebook_text_analytics_results.xlsx")
