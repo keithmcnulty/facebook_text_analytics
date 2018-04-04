@@ -143,11 +143,9 @@ corpus <- tm::tm_map(corpus, stripWhitespace)
 # remove numbers
 corpus <- tm::tm_map(corpus, content_transformer(removeNumbers))
 
-# harmonize and anonymize kids names
+# remove sensitive content (eg family names) - use repeatedly where necessary
 
-
-corpus <- tm::tm_map(corpus, content_transformer(function(x) gsub(x, pattern = "gracie", replacement = "child1")))
-corpus <- tm::tm_map(corpus, content_transformer(function(x) gsub(x, pattern = "isla", replacement = "child2")))
+# corpus <- tm::tm_map(corpus, content_transformer(function(x) gsub(x, pattern = "original", replacement = "replacement")))
 
 
 # create term document matrix
