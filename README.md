@@ -11,9 +11,9 @@ Installations instructions on MacOS:
 ```
 R CMD BATCH facebook_text_analytics.R
 ```
-6. To see the progress, run from another terminal window 
+6. To see the progress, run from another terminal window, same folder as script:
 ```
-tail -f facebook_text_analytics.Rout (same folder as script)
+tail -f facebook_text_analytics.Rout
 ```
 
 If execution fails on "to must be a finite number", comment out the following 3 lines (99-101) in the script:
