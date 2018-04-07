@@ -6,6 +6,25 @@
 ##
 ## written by Keith McNulty
 
+# install libraries if needed
+list.of.packages <- c("stringr", 
+            "tm", 
+            "RColorBrewer", 
+            "topicmodels", 
+            "tidytext",
+            "ggplot2", 
+            "dplyr", 
+            "ldatuning", 
+            "openxlsx", 
+            "webshot",
+            "slam",
+            "wordcloud",
+            "plotly")
+
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos = "http://cran.us.r-project.org")
+
+
 
 # load libraries
 
