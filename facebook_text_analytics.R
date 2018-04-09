@@ -70,7 +70,9 @@ post_list <- stringr::str_match_all(doc.html.combined, '<div class=\"meta\">(.+?
 
 datetime_vec <- unlist(post_list[[1]][,2])
 
-date_vec <- as.POSIXct(datetime_vec, format = "%A, %d %B %Y", tz="GMT")
+datetime_vecdate <- sub(' at.*', '', datetime_vec)
+
+date_vec <- as.POSIXct(datetime_vecdate, format = "%A, %d %B %Y", tz="GMT")
 
 year_vec <- format(date_vec, "%Y") %>% as.factor()
 
