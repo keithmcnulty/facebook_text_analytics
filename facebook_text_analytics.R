@@ -61,17 +61,16 @@ doc.html.combined <- paste(doc.html.unlisted, collapse = " ")
 
 #create list of posts and dates
 
-post_list <- stringr::str_match_all(doc.html.combined, '<div class=\"comment\">(.+?)</div>')
+post_list <- stringr::str_match_all(doc.html.combined, '<div class=\"meta\">(.+?)</div><div class=\"comment\">(.+?)</div>')
 
-datetime_list <- stringr::str_match_all(doc.html.combined, '<div class=\"meta\">(.+?)</div>')
 
 #strip out dates and hours of activity
 
-datetime_vec <- unlist(datetime_list[[1]][,2])
+datetime_vec <- unlist(post_list[[1]][,2])
 
 date_vec <- as.POSIXct(datetime_vec, format = "%A, %d %B %Y", tz="GMT")
 
-year_vec <- dom_vec <- format(date_vec, "%Y") %>% as.factor()
+year_vec <- format(date_vec, "%Y") %>% as.factor()
 
 time_vec <- sub('.*at ', '', datetime_vec)
 
@@ -118,7 +117,7 @@ export(p3, "hourly_activity_bar.jpeg")
 
 # create vector of posts stripped of html wrappers
 
-post_vec <- unlist(post_list[[1]][,2])
+post_vec <- unlist(post_list[[1]][,3])
 
 
 
