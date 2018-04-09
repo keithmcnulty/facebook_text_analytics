@@ -102,7 +102,9 @@ dev.off()
 # activity by year bar chart
 
 p2 <- plotly::plot_ly(year_totals, x = ~year_vec, y = ~total, type = 'bar') %>% 
-  plotly::layout(title = "Posts by year", xaxis = list(title = "Year"), yaxis = list(title = "Posts"))
+  plotly::layout(title = "Posts by year", xaxis = list(title = "Year"), yaxis = list(title = "Posts")) %>% 
+  plotly::add_lines(y = ~fitted(loess(total ~ as.numeric(year_vec))), line = list(color = 'red'),
+                    name = "Loess Smoother", showlegend = TRUE)
 export(p2, "yearly_activity_bar.jpeg")
 
 # hour of day bar chart
